@@ -21,7 +21,7 @@
 require_once('simple_html_dom.php');
 
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'http://www.google.ie/movies?near=montreuil');
+curl_setopt($curl, CURLOPT_URL, 'http://www.google.fr/movies?near=montreuil');
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
 $str = curl_exec($curl);
@@ -32,13 +32,13 @@ $html = str_get_html($str);
 print '<pre>';
 foreach($html->find('#movie_results .theater') as $div) {
   // print theater and address info
-  print "Theater:  ".$div->find('h2 a',0)->innertext."\n";
-  print "Address: ". $div->find('.info',0)->innertext."\n";
+  print "Cinéma:  ".$div->find('h2 a',0)->innertext."\n";
+  print "Adresse: ". $div->find('.info',0)->innertext."\n";
 
   // print all the movies with showtimes
   foreach($div->find('.movie') as $movie) {
-    print "Movie:    ".$movie->find('.name a',0)->innertext.'<br />';
-    print "Time:    ".$movie->find('.times',0)->innertext.'<br />';
+    print "Film:    ".$movie->find('.name a',0)->innertext.'<br />';
+    print "Horaire:    ".$movie->find('.times',0)->innertext.'<br />';
   }
   print "\n\n";
 }
