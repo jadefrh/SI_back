@@ -1,48 +1,32 @@
 <?php
-/**
-* Google Showtime grabber
-*
-* This file will grab the last showtimes of theatres nearby your zipcode.
-* Please make the URL your own! You can also add parameters to this URL:
-* &date=0|1|2|3 => today|1 day|2 days|etc..
-* &start=10 gets the second page etc...
-*
-* Please download the latest version of simple_html_dom.php on sourceForge:
-* http://sourceforge.net/projects/simplehtmldom/files/
-*
-* @author Bas van Dorst <info@basvandorst.nl>
-* @version 0.1
-* @package GoogleShowtime
-*
-* @modifyed by stephen byrne <gold.mine.labs@gmail.com>
-* @GoldMinelabs.com
-*/
 
-require_once('simple_html_dom.php');
+// Config
+include 'config/options.php';
+// include 'config/database.php'; // Uncomment if you need database
 
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'http://www.google.fr/movies?near=montreuil');
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
-$str = curl_exec($curl);
-curl_close($curl);
+// Get the query
+$q = empty($_GET['q']) ? '' : $_GET['q'];
 
-$html = str_get_html($str);
+// Routes
+if($q == '')
+	$page = 'home';
+else if($q == 'about')
+	$page = 'about';
+else if($q == 'news')
+	$page = 'news';
+else if(preg_match('/^news\/[-a-z0-9]+$/',$q)) // news/mon-titre-d-actualite
+	$page = 'news-single';
+else
+	$page = '404';
 
-print '<pre>';
-foreach($html->find('#movie_results .theater') as $div) {
-  // print theater and address info
-  print "Cinéma:  ".$div->find('h2 a',0)->innertext."\n";
-  print "Adresse: ". $div->find('.info',0)->innertext."\n";
+// Includes
+include 'controllers/'.$page.'.php';
+include 'views/partials/header.php';
+include 'views/pages/'.$page.'.php';
+include 'views/partials/footer.php';
 
-  // print all the movies with showtimes
-  foreach($div->find('.movie') as $movie) {
-    print "Film:    ".$movie->find('.name a',0)->innertext.'<br />';
-    print "Horaire:    ".$movie->find('.times',0)->innertext.'<br />';
-  }
-  print "\n\n";
-}
+// Scraping classes
+require_once('class/simple_html_dom.php');
+require_once('class/googleshowtime.php');
 
-// clean up memory
-$html->clear();
 ?>
