@@ -45,8 +45,8 @@ $html = str_get_html($str);
 
 
 // Tentative data printr for our application
-print '<pre>';
-print 'AFFICHAGE PAR SEANCE :'.'<br /><br />';
+// print '<pre>';
+// print 'AFFICHAGE PAR SEANCE :'.'<br /><br />';
 $showtimes = array();
 $t = 0;
 foreach ($html->find('#movie_results .theater') as $div) {
@@ -80,12 +80,12 @@ foreach ($html->find('#movie_results .theater') as $div) {
 }
 
 $_SESSION["showtimes"] = $showtimes;
-echo "<pre>";
-print_r($_SESSION["showtimes"]);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION["showtimes"]);
+// echo "</pre>";
 
 
-echo "TOTAL : ".$t." séances.";
+// echo "TOTAL : ".$t." séances.";
 
 // clean up memory
 $html->clear();
