@@ -27,7 +27,6 @@ curl_close($curl);
 
 $html = str_get_html($str);
 
-
 // Default data printr for Defaut CURLOPT_URL
 // print '<pre>';
 // foreach($html->find('#movie_results .theater') as $div) {
@@ -53,10 +52,11 @@ foreach ($html->find('#movie_results .theater') as $div) {
   foreach ($div->find('.movie') as $movie) {
     $i = 0;
     foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
-      $movie_name             = $movie->find('.name > a', 0)->innertext;
-      $movie_theater          = $div->find('h2 > a', 0)->innertext;
-      $movie_address          = $div->find('.info',0)->innertext;
-      $movie_lang             = $movie->find('.times text', 0)->plaintext;
+      $movie_name             = utf8_encode($movie->find('.name > a', 0)->innertext);
+      $movie_theater          = utf8_encode($div->find('h2 > a', 0)->innertext);
+      $movie_address          = utf8_encode($div->find('.info',0)->innertext);
+      $movie_lang             = utf8_encode($movie->find('.times text', 0)->plaintext);
+
       if ($movie_lang !== "VO st Fr") {
         $movie_lang = 'VF';
       } else {
@@ -80,10 +80,10 @@ foreach ($html->find('#movie_results .theater') as $div) {
 }
 
 $_SESSION["showtimes"] = $showtimes;
-// echo "<pre>";
-// print_r($_SESSION["showtimes"]);
-// echo "</pre>";
 
+// echo "<pre>";
+// var_dump($showtimes);
+// echo "</pre>";
 
 // echo "TOTAL : ".$t." séances.";
 
