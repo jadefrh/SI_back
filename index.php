@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION["showtimes"] = $showtimes;
 
 // Config
 include 'config/options.php';

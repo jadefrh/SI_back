@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
 * Google Showtime grabber
 *
@@ -42,53 +43,49 @@ $html = str_get_html($str);
 //   print "\n\n";
 // }
 
-// Tentative data printr for us
-// 1. loop through theaters
-//  2. loop through movies
-//    3. loop through showtimes
-//      4. for each showtime, echo movie's Name, Theater, Address, showtime
+
+// Tentative data printr for our application
 print '<pre>';
 print 'AFFICHAGE PAR SEANCE :'.'<br /><br />';
-$times = array();
+$showtimes = array();
+$t = 0;
 foreach ($html->find('#movie_results .theater') as $div) {
   foreach ($div->find('.movie') as $movie) {
+    $i = 0;
     foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
-      if (!empty($showtime)) {
-        $movie_name             = $movie->find('.name > a', 0)->innertext;
-        $movie_theater          = $div->find('h2 > a', 0)->innertext;
-        $movie_address          = $div->find('.info',0)->innertext;
-        $movie_showtime_raw     = preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime_raw->innertext); // strips the showtime from its useless <span> tag
-        $movie_showtime_decoded = explode(':', $movie_showtime_raw); // splits the showtime in 2 (hour | minutes) in 24h format
-        $movie_showtime         = $movie_showtime_decoded[0].":".$movie_showtime_decoded[1]; // binds the showtime together
-
-        // echo $movie_name."<br />".$movie_theater."<br />".$movie_address."<br />".$movie_showtime."<br />";
-
-        // array_push($times, array($movie_name, $movie_theater, $movie_address, $movie_showtime));
-
-        // echo "<pre>";
-        // print_r($times);
-        // echo "</pre>";
-        // print $times;
-
-        // print "Film : ".$movie_name.'<br />';
-        // print "Cinéma : ".$movie_theater."<br />";
-        // print "Adresse: ".$movie_address."<br />";
-        // print "Horaire : ".$movie_showtime.'<br />';
-
-
-        // print "Film : ".$movie->find('.name > a', 0)->innertext.'<br />';
-        // print "Cinéma : ".$div->find('h2 > a', 0)->innertext."<br />";
-        // print "Adresse: ".$div->find('.info',0)->innertext."<br />";
-        // print "Horaire : ".$showtime->innertext.'<br />';
+      $movie_name             = $movie->find('.name > a', 0)->innertext;
+      $movie_theater          = $div->find('h2 > a', 0)->innertext;
+      $movie_address          = $div->find('.info',0)->innertext;
+      $movie_lang             = $movie->find('.times text', 0)->plaintext;
+      if ($movie_lang !== "VO st Fr") {
+        $movie_lang = 'VF';
+      } else {
+        $movie_lang = "VOSTFR";
       }
+      $movie_showtime_raw     = preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime->innertext); // strips the showtime from its useless <span> tag
+      $movie_showtime_decoded = explode(':', $movie_showtime_raw); // splits the showtime in 2 (hour | minutes) in 24h format
+      $movie_showtime         = $movie_showtime_decoded[0].":".$movie_showtime_decoded[1]; // binds the showtime together
+
+      $showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime);
+      $showtimes[] = $showtime_to_add;
+
+      $i++;
+      $t++;
+      if($i==1) break;
     }
+    if($t==50) break;
     print "\n\n";
   }
+  if($t==50) break;
 }
 
-// echo "<pre>";
-// print_r($times);
-// echo "</pre>";
+$_SESSION["showtimes"] = $showtimes;
+echo "<pre>";
+print_r($_SESSION["showtimes"]);
+echo "</pre>";
+
+
+echo "TOTAL : ".$t." séances.";
 
 // clean up memory
 $html->clear();
