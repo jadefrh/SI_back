@@ -3,3 +3,35 @@ body {
 	font-family:Helvetica,Arial;
 	font-size:14px;
 }
+
+body.page-home .main-input {
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+body.page-home input {
+	padding:10px;
+	background-color: white;
+	width: 250px;
+	height: 50px;
+	border-radius: 20px;
+	display: block;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+body.page-home .movie_card {
+	border: 1px solid black;
+	width: 500px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+body.page-home .movie_card .movie_card_title {
+	font-weight: bold;
+}
