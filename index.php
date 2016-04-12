@@ -29,8 +29,12 @@ include 'views/partials/footer.php';
 
 // Scraping classes
 require_once('class/simple_html_dom.php');
-// require_once('class/googleshowtime.php');
+require_once('class/googleshowtime.php');
 
 // The Movie Database
 require_once('class/themoviedb.php');
+
+date_default_timezone_set('Europe/Paris');
+$date = date('H:i:s', time());
+echo $date;
 ?>

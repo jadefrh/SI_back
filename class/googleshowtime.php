@@ -52,19 +52,16 @@ foreach ($html->find('#movie_results .theater') as $div) {
   foreach ($div->find('.movie') as $movie) {
     $i = 0;
     foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
-      $movie_name             = utf8_encode($movie->find('.name > a', 0)->innertext);
-      $movie_theater          = utf8_encode($div->find('h2 > a', 0)->innertext);
-      $movie_address          = utf8_encode($div->find('.info',0)->innertext);
-      $movie_lang             = utf8_encode($movie->find('.times text', 0)->plaintext);
-
-      if ($movie_lang !== "VO st Fr") {
+      $movie_name    = utf8_encode($movie->find('.name > a', 0)->innertext);
+      $movie_theater = utf8_encode($div->find('h2 > a', 0)->innertext);
+      $movie_address = utf8_encode($div->find('.info',0)->innertext);
+      if (utf8_encode($movie->find('.times text', 0)->plaintext) !== "VO st Fr") {
         $movie_lang = 'VF';
       } else {
         $movie_lang = "VOSTFR";
       }
-      $movie_showtime_raw     = preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime->innertext); // strips the showtime from its useless <span> tag
-      $movie_showtime_decoded = explode(':', $movie_showtime_raw); // splits the showtime in 2 (hour | minutes) in 24h format
-      $movie_showtime         = $movie_showtime_decoded[0].":".$movie_showtime_decoded[1]; // binds the showtime together
+      $movie_showtime_arrsplit = explode(':', preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime->innertext)); // strips the showtime from its useless <span> tag, splits the showtime in 2 (hour | minutes) in 24h format
+      $movie_showtime = $movie_showtime_arrsplit[0].":".$movie_showtime_arrsplit[1]; // binds the showtime together
 
       $showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime);
       $showtimes[] = $showtime_to_add;
