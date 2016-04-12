@@ -54,11 +54,14 @@ foreach ($html->find('#movie_results .theater') as $div) {
   foreach ($div->find('.movie') as $movie) {
     foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
       if (!empty($showtime)) {
-        $movie_name     = $movie->find('.name > a', 0)->innertext;
-        $movie_theater  = $div->find('h2 > a', 0)->innertext;
-        $movie_address  = $div->find('.info',0)->innertext;
-        $movie_showtime = preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime->innertext);
-        echo $movie_name."<br />".$movie_theater."<br />".$movie_address."<br />".$movie_showtime."<br />";
+        $movie_name             = $movie->find('.name > a', 0)->innertext;
+        $movie_theater          = $div->find('h2 > a', 0)->innertext;
+        $movie_address          = $div->find('.info',0)->innertext;
+        $movie_showtime_raw     = preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime_raw->innertext); // strips the showtime from its useless <span> tag
+        $movie_showtime_decoded = explode(':', $movie_showtime_raw); // splits the showtime in 2 (hour | minutes) in 24h format
+        $movie_showtime         = $movie_showtime_decoded[0].":".$movie_showtime_decoded[1]; // binds the showtime together
+
+        // echo $movie_name."<br />".$movie_theater."<br />".$movie_address."<br />".$movie_showtime."<br />";
 
         // array_push($times, array($movie_name, $movie_theater, $movie_address, $movie_showtime));
 
