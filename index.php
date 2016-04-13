@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION["showtimes"] = $showtimes;
 date_default_timezone_set('Europe/Paris');
 $date_hour = date('H', time());
 $date_minutes = date('i', time());
@@ -25,6 +24,8 @@ else if($q == 'results')
 	$page = 'results';
 else if($q == 'legal')
   $page = 'legal';
+else if($q == 'results')
+	$page = 'results';
 else
 	$page = '404';
 
@@ -47,4 +48,3 @@ $date_minutes = date('i', time());
 // echo "<pre>";
 // var_dump($_SESSION["showtimes"]);
 // echo "</pre>";
-?>
