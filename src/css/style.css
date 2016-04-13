@@ -270,6 +270,7 @@ nav .navist a {
   height: 490px;
   margin-bottom: 20px;
   background-color: #fff;
+  overflow-y: scroll;
   /*border-radius: 0.3125em;
   border-left: 1px solid #dedfe2;
   border-right: 1px solid #dedfe2;
@@ -283,6 +284,7 @@ nav .navist a {
   text-align: left;
   padding: 8px;
   margin-top: 10px;
+  margin-bottom: 20px;
   border-collapse: collapse;
   border-spacing: 0;
   width: 92%;
