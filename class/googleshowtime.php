@@ -27,7 +27,7 @@ curl_close($curl);
 
 $html = str_get_html($str);
 
-// Default data printr for Defaut CURLOPT_URL
+// Default data printr for Default CURLOPT_URL
 // print '<pre>';
 // foreach($html->find('#movie_results .theater') as $div) {
 //   // print theater and address info
@@ -47,33 +47,48 @@ $html = str_get_html($str);
 // print '<pre>';
 // print 'AFFICHAGE PAR SEANCE :'.'<br /><br />';
 $showtimes = array();
-$t = 0;
+$t = 0; // sum of theaters
+$m = 0; // sum of movies
+$s = 0; // sum of showtimes
 foreach ($html->find('#movie_results .theater') as $div) {
   foreach ($div->find('.movie') as $movie) {
-    $i = 0;
     foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
       $movie_name    = utf8_encode($movie->find('.name > a', 0)->innertext);
       $movie_theater = utf8_encode($div->find('h2 > a', 0)->innertext);
       $movie_address = utf8_encode($div->find('.info',0)->innertext);
-      if (utf8_encode($movie->find('.times text', 0)->plaintext) !== "VO st Fr") {
-        $movie_lang = 'VF';
+      if (utf8_encode($movie->find('.times text', 0)->plaintext) == "VO st Fr") {
+        $movie_lang = 'VOSTFR';
       } else {
-        $movie_lang = "VOSTFR";
+        $movie_lang = 'VF';
       }
       $movie_showtime_arrsplit = explode(':', preg_replace('/<span[^>]*>([\s\S]*?)<\/span[^>]*>/', '', $showtime->innertext)); // strips the showtime from its useless <span> tag, splits the showtime in 2 (hour | minutes) in 24h format
       $movie_showtime = $movie_showtime_arrsplit[0].":".$movie_showtime_arrsplit[1]; // binds the showtime together
 
-      $showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime);
+      $showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime, $movie_showtime_arrsplit[0], $movie_showtime_arrsplit[1]);
       $showtimes[] = $showtime_to_add;
 
-      $i++;
-      $t++;
-      if($i==1) break;
+      // Add an $array into $showtimes array :
+      // if $showtimes is empty
+      //  $showtimes[] = $array;
+      // else
+      //  for $i from 0 to $l->$showtimes.length
+      //    if $array[hour] < $showtimes[$i][hour]
+      //      $array_splice($showtimes, $i, 0, $array);
+      //    else if $array[hour] = $showtimes[$i][hour]
+      //      if $array[minutes] < $showtimes[$i][minutes]
+      //        $array_splice($showtimes, $i, 0, $array);
+
+      $s++;
+      if($s==50) break;
     }
-    if($t==50) break;
-    print "\n\n";
+    $m++;
+    if($s==50) break;
+    if($m==30) break;
   }
-  if($t==50) break;
+  $t++;
+  if($s==50) break;
+  if($m==30) break;
+  if($t==6) break;
 }
 
 $_SESSION["showtimes"] = $showtimes;
@@ -82,7 +97,7 @@ $_SESSION["showtimes"] = $showtimes;
 // var_dump($showtimes);
 // echo "</pre>";
 
-// echo "TOTAL : ".$t." séances.";
+echo $t." cinémas, ".$m." films, et ".$s." séances."."<br />";
 
 // clean up memory
 $html->clear();

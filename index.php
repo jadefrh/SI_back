@@ -35,6 +35,11 @@ require_once('class/googleshowtime.php');
 require_once('class/themoviedb.php');
 
 date_default_timezone_set('Europe/Paris');
-$date = date('H:i:s', time());
-echo $date;
+$date_hour = date('H', time());
+$date_minutes = date('i', time());
+echo $date_hour." heures et ".$date_minutes." minutes.";
+
+echo "<pre>";
+var_dump($_SESSION["showtimes"]);
+echo "</pre>";
 ?>
