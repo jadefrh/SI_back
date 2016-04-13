@@ -104,6 +104,8 @@ nav {
   background-size: 32px 32px;
 }
 
+
+
 .left {
   float: left;
 }
@@ -159,8 +161,14 @@ nav .navist a {
 }
 
 .wp {
-  background: url('../images/bg.jpg');
+  background: url('../images/bg.jpg') 50% 50% repeat-y;
   height: 610px;
+  animation: loop 80s infinite alternate linear;
+}
+
+@keyframes loop {
+  0% {background-position: 50% 50%;}
+  100% {background-position: 50% 700%;}
 }
 
 .content .container .panel {
