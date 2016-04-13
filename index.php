@@ -1,5 +1,9 @@
 <?php
 session_start();
+$_SESSION["showtimes"] = $showtimes;
+date_default_timezone_set('Europe/Paris');
+$date_hour = date('H', time());
+$date_minutes = date('i', time());
 
 // Config
 include 'config/options.php';
@@ -10,15 +14,15 @@ $q = empty($_GET['q']) ? '' : $_GET['q'];
 
 // Routes
 if($q == '')
-	$page = 'home';
+$page = 'home';
 else if($q == 'about')
-	$page = 'about';
+$page = 'about';
 else if($q == 'news')
-	$page = 'news';
+$page = 'news';
 else if(preg_match('/^news\/[-a-z0-9]+$/',$q)) // news/mon-titre-d-actualite
-	$page = 'news-single';
+$page = 'news-single';
 else
-	$page = '404';
+$page = '404';
 
 // Includes
 include 'controllers/'.$page.'.php';
@@ -32,13 +36,3 @@ require_once('class/googleshowtime.php');
 
 // The Movie Database
 require_once('class/themoviedb.php');
-
-date_default_timezone_set('Europe/Paris');
-$date_hour = date('H', time());
-$date_minutes = date('i', time());
-echo $date_hour." heures et ".$date_minutes." minutes.";
-
-echo "<pre>";
-var_dump($_SESSION["showtimes"]);
-echo "</pre>";
-?>
