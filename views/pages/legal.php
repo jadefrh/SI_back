@@ -1,0 +1,3 @@
+<section>
+	Mentions légales
+</section>

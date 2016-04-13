@@ -17,12 +17,14 @@ if($q == '')
 	$page = 'home';
 else if($q == 'about')
 	$page = 'about';
-else if($q == 'news')
-	$page = 'news';
+else if($q == 'showtimes')
+  $page = 'showtimes';
+else if($q == 'routes')
+  $page = 'routes';
 else if($q == 'results')
 	$page = 'results';
-else if(preg_match('/^news\/[-a-z0-9]+$/',$q)) // news/mon-titre-d-actualite
-	$page = 'news-single';
+else if($q == 'legal')
+  $page = 'legal';
 else
 	$page = '404';
 
