@@ -40,10 +40,9 @@ require_once('class/googleshowtime.php');
 date_default_timezone_set('Europe/Paris');
 $date_hour = date('H', time());
 $date_minutes = date('i', time());
-echo $date_hour." heures et ".$date_minutes." minutes.";
+// echo $date_hour." heures et ".$date_minutes." minutes.";
 
-echo "<pre>";
-var_dump($_SESSION["showtimes"]);
-echo "</pre>";
+// echo "<pre>";
+// var_dump($_SESSION["showtimes"]);
+// echo "</pre>";
 ?>
-
