@@ -17,13 +17,8 @@
       </div>
       <div class="right-zone">
         <form action="<?= URL?>results" method="get">
-          <input type="text" placeholder="Code postal" class='input-style right'>
-          <input type="text" id="zipcode" name="zipcode" value="93100" type="hidden">
-          <script type="text/javascript">
-          window.onload() = function() {
-            document.getElementById('zipcode').value = zipcode;
-          }
-          </script>
+          <input type="text" id="zipcodeinput" placeholder="Code postal" value="" class='input-style right'>
+          <input type="text" id="zipcodehidden" name="zipcode" value="" type="hidden">
           <a href="#"><input type="submit" name="submit" class='submit-style red-b right' value="SÉANCES AUTOUR DE MOI"></a>
         </form>
       </div>

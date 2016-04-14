@@ -1,4 +1,4 @@
 <?php
 
-	$title = 'Séances';
-	$class = 'showtimes';
+$title = 'Séances';
+$class = 'showtimes';

@@ -313,6 +313,7 @@ nav .navist a {
   font-weight: 600;
   font-size: 22px;
   text-align: left;
+  max-width: 190px;
 }
 
 .cinema-title {
@@ -859,6 +860,8 @@ body {
   background-color: #4c5264;
   cursor: pointer;
   border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 1.1px;
 }
 
 .red-b {
@@ -893,8 +896,13 @@ body {
   margin-right: auto;
 }
 
-#zipcode {
+#zipcodehidden {
   pointer-events: none;
   position: absolute;
   display: none;
+}
+
+.results-view {
+  max-height: 570px;
+  overflow-x: hidden;
 }

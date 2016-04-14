@@ -31,46 +31,47 @@ $html = str_get_html($str);
 
 // Google Movies Custom Parser
 $showtimes = array();
+$counts = array();
 $t = 0; // sum of theaters
 $m = 0; // sum of movies
 $s = 0; // sum of showtimes
 foreach ($html->find('#movie_results .theater') as $div) {
-	foreach ($div->find('.movie') as $movie) {
-		foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
-			$movie_name    = utf8_encode($movie->find('.name > a', 0)->innertext);
-			$movie_theater = utf8_encode($div->find('h2 > a', 0)->innertext);
-			$movie_address = utf8_encode($div->find('.info',0)->innertext);
+  foreach ($div->find('.movie') as $movie) {
+    foreach ($movie->find('.times > span[style="color:"]') as $showtime) {
+      $movie_name    = utf8_encode($movie->find('.name > a', 0)->innertext);
+      $movie_theater = utf8_encode($div->find('h2 > a', 0)->innertext);
+      $movie_address = utf8_encode($div->find('.info',0)->innertext);
 
-			// Sanitize lang
-			if (utf8_encode($movie->find('.times text', 0)->plaintext) == "VO st Fr") $movie_lang = 'Française';
-			else $movie_lang = 'Originale';
+      // Sanitize lang
+      if (utf8_encode($movie->find('.times text', 0)->plaintext) == "VO st Fr") $movie_lang = 'Française';
+      else $movie_lang = 'Originale';
 
-			// Sanitize the showtime
-			$movie_showtime = $showtime->innertext;
-			$movie_showtime = substr(trim($movie_showtime), -5);
-			$movie_showtime_arrsplit = explode(':', $movie_showtime); // strips the showtime from its useless <span> tag, splits the showtime in 2 (hour | minutes) in 24h format
-			$movie_showtime = intval($movie_showtime_arrsplit[0]).":".intval($movie_showtime_arrsplit[1]); // binds the showtime together
+      // Sanitize the showtime
+      $movie_showtime = $showtime->innertext;
+      $movie_showtime = substr(trim($movie_showtime), -5);
+      $movie_showtime_arrsplit = explode(':', $movie_showtime); // strips the showtime from its useless <span> tag, splits the showtime in 2 (hour | minutes) in 24h format
+      $movie_showtime = intval($movie_showtime_arrsplit[0]).":".intval($movie_showtime_arrsplit[1]); // binds the showtime together
 
-			$showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime, $movie_showtime_arrsplit[0], $movie_showtime_arrsplit[1]);
-			$showtimes[] = $showtime_to_add;
+      $showtime_to_add = array($movie_name, $movie_theater, $movie_address, $movie_lang, $movie_showtime, $movie_showtime_arrsplit[0], $movie_showtime_arrsplit[1]);
+      $showtimes[] = $showtime_to_add;
 
-			$s++;
-			if($s==50) break;
-		}
-		$m++;
-		if($s==50) break;
-		// if($m==20) break;
-	}
-	$t++;
-	if($s==50) break;
-	// if($m==20) break;
-	// if($t==10) break;
+      $s++;
+      if($s==50) break;
+    }
+    $m++;
+    if($s==50) break;
+    if($m==20) break;
+  }
+  $t++;
+  if($s==50) break;
+  if($m==20) break;
+  if($t==10) break;
 }
 
 function build_sorter($key) {
-	return function ($a, $b) use ($key) {
-		return strnatcmp($a[$key], $b[$key]);
-	};
+  return function ($a, $b) use ($key) {
+    return strnatcmp($a[$key], $b[$key]);
+  };
 }
 usort($showtimes, build_sorter('4'));
 

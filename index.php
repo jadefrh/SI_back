@@ -22,8 +22,8 @@ else if($q == 'routes')
   $page = 'routes';
 else if($q == 'results')
 	$page = 'results';
-else if($q == 'legal')
-  $page = 'legal';
+else if($q == 'aide')
+  $page = 'aide';
 else if($q == 'results')
 	$page = 'results';
 else

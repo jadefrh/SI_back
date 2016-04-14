@@ -14,13 +14,13 @@
     <div class="container">
       <a id="logo" href="<?= URL ?>" title="Cineto.me"></a>
       <ul class="navist left">
-        <li class="active"><a href="<?= URL ?>results">Recherche</a></li>
+        <li <?php if('') ?>class="active"><a href="<?= URL ?>results">Recherche</a></li>
         <li><a href="<?= URL ?>showtimes">Seances</a></li>
         <li><a href="<?= URL ?>routes">Itinéraires</a></li>
       </ul>
       <ul class="navist right">
-        <li><a href="<?= URL ?>about">Aide</a></li>
-        <li><a href="<?= URL ?>legal">A propos</a></li>
+        <li><a href="<?= URL ?>about">A propos</a></li>
+        <li><a href="<?= URL ?>aide">Aide</a></li>
       </ul>
     </div>
   </nav>
