@@ -34,8 +34,11 @@ $(function () {
 	    			<img src='http://image.tmdb.org/t/p/w500/"+ poster +"'>
 	    			<p id='date'>"+ date +"</p>
 	    			<p id='popularity'>"+ popularity +"</p>";
+	    });
+});
 
 function roundToTwo(num) {
   return +(Math.round(num + "e+5")  + "e-5");
 }
+
 
