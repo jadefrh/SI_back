@@ -17,7 +17,6 @@
         <li><a href="<?= URL ?>results">Recherche</a></li>
         <li><a href="<?= URL ?>showtimes">Seances</a></li>
         <li><a href="<?= URL ?>routes">Itinéraires</a></li>
-        <!-- <li><a href="#">Commande</a></li> -->
       </ul>
       <ul class="navist right">
         <li><a href="<?= URL ?>about">A propos</a></li>

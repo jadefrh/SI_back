@@ -5,8 +5,15 @@
 				à côté de chez vous</h1>
 			</h1>
       <section>
-      	<form action="#" method="post">
-      			<input type="text" name="user_q" id="user_q" value="<?= $user_q ?>" >
+      	<form action="<?= URL?>results" method="get">
+      			<!-- <input type="text" name="user_q" id="user_q" value="<?= $user_q ?>" > -->
+            <input id="zipcode" name="zipcode" value="93100" type="hidden">
+            <script type="text/javascript">
+              window.onload() = function() {
+                document.getElementById('zipcode').value = zipcode;
+              }
+            </script>
+            <input type="submit">
       	</form>
       </section>
 		</div>

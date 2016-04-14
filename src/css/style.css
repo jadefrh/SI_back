@@ -58,9 +58,9 @@ body.page-results #results_list {
 
 }
 
-body.page-results .container {
+/*body.page-results .container {
  width: 100%;
-}
+}*/
 
 body.page-results #view img {
 	width: 100px;

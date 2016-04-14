@@ -17,8 +17,11 @@
 * @modifyed by stephen byrne <gold.mine.labs@gmail.com>
 * @GoldMinelabs.com
 */
+$zip = $_GET["zipcode"];
+$gmurl = 'http://www.google.fr/movies?near='.$zip;
+
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'http://www.google.fr/movies?near=montreuil'); // Default CURLOPT_URL - near Montreuil
+curl_setopt($curl, CURLOPT_URL, $gmurl); // Default CURLOPT_URL - near Montreuil
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
 $str = curl_exec($curl);
@@ -26,22 +29,7 @@ curl_close($curl);
 
 $html = str_get_html($str);
 
-// Default data printr for Default CURLOPT_URL
-// print '<pre>';
-// foreach($html->find('#movie_results .theater') as $div) {
-//   // print theater and address info
-//   print "Cinéma:  ".$div->find('h2 a',0)->innertext."\n";
-//   print "Adresse: ". $div->find('.info',0)->innertext."\n";
-//
-//   // print all the movies with showtimes
-//   foreach($div->find('.movie') as $movie) {
-//     print "Film:    ".$movie->find('.name a',0)->innertext.'<br />';
-//     print "Horaire:    ".$movie->find('.times',0)->innertext.'<br />';
-//   }
-//   print "\n\n";
-// }
-
-// Tentative data printr for our application
+// Google Movies Custom Parser
 $showtimes = array();
 $t = 0; // sum of theaters
 $m = 0; // sum of movies
@@ -71,12 +59,12 @@ foreach ($html->find('#movie_results .theater') as $div) {
 		}
 		$m++;
 		if($s==50) break;
-		if($m==15) break;
+		if($m==20) break;
 	}
 	$t++;
 	if($s==50) break;
-	if($m==15) break;
-	if($t==6) break;
+	if($m==20) break;
+	if($t==10) break;
 }
 
 function build_sorter($key) {
@@ -88,9 +76,9 @@ usort($showtimes, build_sorter('4'));
 
 $_SESSION["showtimes"] = $showtimes;
 
-// echo "<pre>";
-// var_dump($_SESSION["showtimes"]);
-// echo "</pre>";
+echo "<pre>";
+print_r($_SESSION["showtimes"]);
+echo "</pre>";
 
 // echo $t." cinémas, ".$m." films, et ".$s." séances."."<br />";
 // echo $date_hour." heures et ".$date_minutes." minutes.";
