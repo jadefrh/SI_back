@@ -45,13 +45,33 @@ body.page-home .movie_card .movie_card_title {
 }
 
 body.page-results .movie_card_result {
-  border: 1px solid red;
-  height:30px;
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-bottom: 5px;
+
 }
 
-body.page-results .movie_card_overview_result {
-  background: red;
+body.page-results #results_list {
+  width: 40%;
+  display: inline-block;
+
 }
+
+body.page-results .container {
+ width: 100%;
+}
+
+body.page-results #view img {
+	width: 100px;
+	height: auto;
+}
+
+body.page-results #view {
+	width: 40%;
+	display: inline-block;
+}
+
 /* END OF TEMP */
 
 
@@ -101,7 +121,7 @@ nav {
   margin-top: 14px;
   margin-right: 16px;
   background: url("../images/logo.png") center center no-repeat;
-  background-size: 32px 32px;
+  background-size: contain;
 }
 
 
@@ -150,7 +170,7 @@ nav .navist a {
 .content {
   position: absolute;
   width: 100%;
-  top: 64px;
+  /*top: 64px;*/
   opacity: 1;
   animation: fade 1s ease-in;
 }
@@ -404,4 +424,80 @@ footer .container .home-partners-logo {
   opacity: 0.8;
   margin-right: 3%;
   margin-top: 8px;
+}
+
+
+
+/* Google Maps API */
+#map {
+  height: 100%;
+}
+
+#map, #right-panel {
+  height: 600px;
+}
+
+#floating-panel {
+  position: absolute;
+  /*top: 10px;*/
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+
+#right-panel {
+  height: 100%;
+  float: right;
+  width: 390px;
+  overflow: auto;
+}
+
+#map {
+  margin-right: 400px;
+}
+
+#floating-panel {
+  background: #fff;
+  padding: 5px;
+  font-size: 14px;
+  font-family: Arial;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+  display: none;
+}
+
+@media print {
+  #map {
+    height: 500px;
+    margin: 0;
+  }
+
+  #right-panel {
+    float: none;
+    width: auto;
+  }
 }

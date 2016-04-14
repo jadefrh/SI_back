@@ -1,10 +1,3 @@
-$(document).ready(function() {
-	$(".movie_card_overview_result").hide();
-    $(".movie_card_result").click(function(){
-        $(".movie_card_overview_result").show();
-    });
-});
-
 window.onload = function() {
   var startPos;
   var geoOptions = {
@@ -33,9 +26,16 @@ $(function () {
 	    var poster = $(this).attr('data-poster');
 	    var title = $(this).attr('data-title');
 	    var overview = $(this).attr('data-overview');
+	    var date = $(this).attr('data-date');
+	    var popularity = $(this).attr('data-popularity');
 
-	    var html = "<h1>"+ title +"</h1><p>"+ overview +"</p><img src='http://image.tmdb.org/t/p/w500/"+ poster +"'>";
+	    var html = "<h1>"+ title +"</h1>
+	    			<p id='overview'>"+ overview +"</p>
+	    			<img src='http://image.tmdb.org/t/p/w500/"+ poster +"'>
+	    			<p id='date'>"+ date +"</p>
+	    			<p id='popularity'>"+ popularity +"</p>";
 
-	    $('#view').html(html);
-	});
-});
+function roundToTwo(num) {
+  return +(Math.round(num + "e+5")  + "e-5");
+}
+

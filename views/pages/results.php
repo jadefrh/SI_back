@@ -1,3 +1,7 @@
+<div class="container">
+    
+    <div id="results_list">
+
 <?php 
 	foreach ($query_results as $q_r) { 
 		$q_r_curl = curl_init();
@@ -15,12 +19,15 @@
 		<div class="movie_card_result" 
             data-title="<?= $film->title ?>"
             data-poster="<?= $film->poster_path ?>"
-            data-overview="<?= $film->overview ?>"> 
+            data-overview="<?= $film->overview ?>" 
+            data-date="<?= $film->release_date ?>"
+            data-popularity="<?= $film->popularity ?>">
     		<div class="movie_card_title_result"> <?= $film->title ?> </div>
-    		<div class="movie_card_overview_result"> hello world </div>
 		</div>
 <?php
     }
 ?>
+</div>
 
 <div id="view"></div>
+</div>
