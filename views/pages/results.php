@@ -1,6 +1,5 @@
 <div class="container">
   <div id="results_list">
-
     <?php
     $i = 0;
     foreach ($_SESSION["showtimes"] as $i => $_showtime) {
@@ -24,22 +23,14 @@
       data-date="<?= $film->release_date ?>"
       data-popularity="<?= $film->popularity ?>">
       <div class="movie_card_title_result"> <?= $film->title ?> </div>
+      <div class="movie_card_title_theater"> <?= $_SESSION["showtimes"][$i][1] ?> </div>
     </div>
     <?php
     $i++;
   }
   ?>
-
-  <?php
-  // $i = 0;
-  // foreach ($_SESSION["showtimes"] as $i => $_showtime) {
-  //   echo "<pre>";
-  //   print_r($_SESSION["showtimes"][$i][0]);
-  //   echo "</pre>";
-  //   $i++;
-  // }
-  ?>
 </div>
+
 
 <div id="view"></div>
 </div>

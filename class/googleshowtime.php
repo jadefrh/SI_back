@@ -59,12 +59,12 @@ foreach ($html->find('#movie_results .theater') as $div) {
 		}
 		$m++;
 		if($s==50) break;
-		if($m==20) break;
+		// if($m==20) break;
 	}
 	$t++;
 	if($s==50) break;
-	if($m==20) break;
-	if($t==10) break;
+	// if($m==20) break;
+	// if($t==10) break;
 }
 
 function build_sorter($key) {

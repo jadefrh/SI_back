@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700,900,700italic,900italic,600italic,400italic,300italic,200italic,200);
 
 *{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
@@ -10,70 +10,6 @@ body {
   font-size:14px;
   margin: 0;
 }
-
-/* TEMP */
-body.page-home .main-input {
-  width: 500px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
-body.page-home input {
-  padding:10px;
-  background-color: white;
-  width: 250px;
-  height: 50px;
-  border-radius: 20px;
-  display: block;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-body.page-home .movie_card {
-  border: 1px solid black;
-  width: 500px;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-}
-
-body.page-home .movie_card .movie_card_title {
-  font-weight: bold;
-}
-
-body.page-results .movie_card_result {
-  width: 100%;
-  height: 50px;
-  background: white;
-  margin-bottom: 5px;
-
-}
-
-body.page-results #results_list {
-  width: 40%;
-  display: inline-block;
-
-}
-
-/*body.page-results .container {
- width: 100%;
-}*/
-
-body.page-results #view img {
-	width: 100px;
-	height: auto;
-}
-
-body.page-results #view {
-	width: 40%;
-	display: inline-block;
-}
-
-/* END OF TEMP */
-
 
 h3 {
   display: inline-block;
@@ -90,14 +26,26 @@ p{
   line-height: 20px;
   margin-left: 20px;
   margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+#about{
+  position: relative;
+  color: #474d5e;
+  font-weight: 400;
+  line-height: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 nav {
+  overflow: hidden;
+  box-sizing: content-box;
   position: relative;
   width: 100%;
   height: 60px;
   background: #4c5264;
-  border-bottom: 4px solid #474d5e;
   z-index: 10;
 }
 
@@ -107,11 +55,15 @@ nav {
   margin-left: auto;
 }
 
+.load-contain {
+  width: 1200px;
+  height: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #logo {
   -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
   transform: translateZ(0);
   float: left;
   display: inline-block;
@@ -121,10 +73,8 @@ nav {
   margin-top: 14px;
   margin-right: 16px;
   background: url("../images/logo.png") center center no-repeat;
-  background-size: contain;
+  background-size: 32px 32px;
 }
-
-
 
 .left {
   float: left;
@@ -147,8 +97,32 @@ nav .navist li {
   display: table-cell;
   vertical-align: middle;
 }
-nav .navist li:hover {
-  color: #bdc3c7;
+
+nav .navist .active {
+  color: #fff;
+  font-size: 13px;
+  display: table-cell;
+  vertical-align: middle;
+  display:block;
+  width:100%;
+  height:56px;
+  border-bottom: 4px solid #FFF;
+}
+
+nav .navist li:after {
+  display:block;
+  width:100%;
+  height:0px;
+  content:" ";
+  border-bottom: 4px solid #FFF;
+  position: relative;
+  top:10px;
+}
+
+nav .navist li:hover:after {
+  -webkit-transform: translate(0px, -14px);
+  transform: translate(0px, -14px);
+  -webkit-transition: all ease .25s;
   transition: all ease .25s;
 }
 
@@ -170,9 +144,14 @@ nav .navist a {
 .content {
   position: absolute;
   width: 100%;
-  /*top: 64px;*/
   opacity: 1;
+  -webkit-animation: fade 1s ease-in;
   animation: fade 1s ease-in;
+}
+
+@-webkit-keyframes fade {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 @keyframes fade {
@@ -183,7 +162,13 @@ nav .navist a {
 .wp {
   background: url('../images/bg.jpg') 50% 50% repeat-y;
   height: 610px;
-  animation: loop 80s infinite alternate linear;
+  -webkit-animation: loop 80s infinite alternate linear;
+          animation: loop 80s infinite alternate linear;
+}
+
+@-webkit-keyframes loop {
+  0% {background-position: 50% 50%;}
+  100% {background-position: 50% 700%;}
 }
 
 @keyframes loop {
@@ -200,6 +185,17 @@ nav .navist a {
   width: 48.8%;
 }
 
+.content .container .extra-panel {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  float: left;
+  display: block;
+  min-height: 455px;
+  width: 100%;
+}
+
 .pad {
   margin-right: 20px;
 }
@@ -210,6 +206,8 @@ nav .navist a {
   height: 60px;
   margin-bottom: 20px;
   background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
   /*border-radius: 0.3125em;
   border-left: 1px solid #dedfe2;
   border-right: 1px solid #dedfe2;
@@ -223,6 +221,8 @@ nav .navist a {
   height: 60px;
   margin-bottom: 20px;
   background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
   /*border-radius: 0.3125em;
   border-left: 1px solid #dedfe2;
   border-right: 1px solid #dedfe2;
@@ -285,16 +285,78 @@ nav .navist a {
 
 .results {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 490px;
+  height: 80px;
+  margin-bottom: 20px;
+  background: url("../images/kf3bg.jpg") no-repeat;
+  background-size:100% auto;
+  -webkit-filter: brightness(0.5);
+  filter: brightness(0.5);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
+}
+
+.results .overlay {
+  width: 100%;
+  height: 100%;
+  background: #4c5264;
+  opacity: 0.85;
+}
+
+.movie-title {
+  position: absolute;
+  top:12px;
+  left: 20px;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: left;
+}
+
+.cinema-title {
+  position: absolute;
+  top:18px;
+  left: 0px;
+  right: 0px;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+}
+
+.time-title {
+  position: absolute;
+  top:12px;
+  right: 20px;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: right;
+}
+
+
+.list {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 520px;
   margin-bottom: 20px;
   background-color: #fff;
-  overflow-y: scroll;
-  /*border-radius: 0.3125em;
-  border-left: 1px solid #dedfe2;
-  border-right: 1px solid #dedfe2;
-  border-bottom: 1px solid #D0D1D5;*/
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
+}
+
+.transport {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 265px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
 }
 
 .tabler {
@@ -304,7 +366,6 @@ nav .navist a {
   text-align: left;
   padding: 8px;
   margin-top: 10px;
-  margin-bottom: 20px;
   border-collapse: collapse;
   border-spacing: 0;
   width: 92%;
@@ -329,17 +390,21 @@ nav .navist a {
   display: block;
   position: relative;
   width: 100%;
-  height: 140px;
+  height: 315px;
   margin-bottom: 20px;
   background-color: #fff;
-  /*border-radius: 0.3125em;
-  border-left: 1px solid #dedfe2;
-  border-right: 1px solid #dedfe2;
-  border-bottom: 1px solid #D0D1D5;*/
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
 }
 
 .movie-data {
   top: -10px;
+}
+
+.synopsis {
+  top: -10px;
+  text-align: justify;
+  font-weight: 400;
 }
 
 .poster {
@@ -357,13 +422,37 @@ nav .navist a {
   display: block;
   position: absolute;
   width: 100%;
-  height: 490px;
+  height: 315px;
   margin-bottom: 20px;
   background-color: #fff;
-  /*border-radius: 0.3125em;
-  border-left: 1px solid #dedfe2;
-  border-right: 1px solid #dedfe2;
-  border-bottom: 1px solid #D0D1D5;*/
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
+}
+
+.map {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 680px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
+}
+
+.about {
+  display: block;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: justify;
+  width: 50%;
+  height: 440px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  text-align : justify;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px #E3E3E3;
 }
 
 .content .home-title {
@@ -426,78 +515,386 @@ footer .container .home-partners-logo {
   margin-top: 8px;
 }
 
-
-
-/* Google Maps API */
-#map {
-  height: 100%;
+/*
+* Infinite Loader
+*
+* Author: Jonathan Silva
+* Url: http://portfolio.jonathansilva.com.br
+*
+*/
+/* ----- Base ----- */
+/* ----- Loader ----- */
+body {
+  background-color: #eee;
 }
 
-#map, #right-panel {
-  height: 600px;
-}
-
-#floating-panel {
+.loader-wrapper {
+  width: 148px;
+  height: 100px;
   position: absolute;
-  /*top: 10px;*/
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
+  margin: -50px 0 0 -74px;
+  left: 50%;
+  top: 60%;
 }
 
-#right-panel {
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
+.loader {
+  width: 148px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.loader:after {
+  content: "";
+  top: auto;
+  position: absolute;
+  display: block;
+  -webkit-animation: shadow 1.2s infinite linear;
+  animation: shadow 1.2s infinite linear;
+  -moz-animation: shadow 1.2s infinite linear;
+  bottom: 0em;
+  left: 0;
+  height: .25em;
+  width: 1em;
+  border-radius: 50%;
+  background-color: #4c5264;
+  opacity: 0.3;
 }
 
-#right-panel select, #right-panel input {
-  font-size: 15px;
+.roller,
+.roller:last-child {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: rollercoaster 1.2s infinite linear;
+  -webkit-transform: rotate(135deg);
+  -moz-animation: rollercoaster 1.2s infinite linear;
+  -moz-transform: rotate(135deg);
+  -webkit-animation: rollercoaster 1.2s infinite linear;
+  animation: rollercoaster 1.2s infinite linear;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
 }
 
-#right-panel select {
-  width: 100%;
+.roller:last-child {
+  left: auto;
+  right: 0;
+  -webkit-transform: rotate(-45deg);
+  -webkit-animation: rollercoaster2 1.2s infinite linear;
+  -moz-transform: rotate(-45deg);
+  -moz-animation: rollercoaster2 1.2s infinite linear;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: rollercoaster2 1.2s infinite linear;
+  animation: rollercoaster2 1.2s infinite linear;
 }
 
-#right-panel i {
-  font-size: 12px;
+.roller:before,
+.roller:last-child:before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #4c5264;
+  border-radius: 50%;
 }
 
-#right-panel {
-  height: 100%;
-  float: right;
-  width: 390px;
-  overflow: auto;
+@-webkit-keyframes rollercoaster {
+  0% {
+    -webkit-transform: rotate(135deg);
+  }
+  8% {
+    -webkit-transform: rotate(240deg);
+  }
+  20% {
+    -webkit-transform: rotate(300deg);
+  }
+  40% {
+    -webkit-transform: rotate(380deg);
+  }
+  45% {
+    -webkit-transform: rotate(440deg);
+  }
+  50% {
+    -webkit-transform: rotate(495deg);
+    opacity: 1;
+  }
+  50.1% {
+    -webkit-transform: rotate(495deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(495deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rollercoaster2 {
+  0% {
+    opacity: 0;
+  }
+  49.9% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: rotate(-45deg);
+  }
+  58% {
+    -webkit-transform: rotate(-160deg);
+  }
+  70% {
+    -webkit-transform: rotate(-240deg);
+  }
+  80% {
+    -webkit-transform: rotate(-300deg);
+  }
+  90% {
+    -webkit-transform: rotate(-340deg);
+  }
+  100% {
+    -webkit-transform: rotate(-405deg);
+  }
+}
+@-webkit-keyframes shadow {
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(65px) scale(0.5, 0.5);
+  }
+  8% {
+    -webkit-transform: translateX(30px) scale(2, 2);
+  }
+  13% {
+    -webkit-transform: translateX(0px) scale(1.3, 1.3);
+  }
+  30% {
+    -webkit-transform: translateX(-15px) scale(0.5, 0.5);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: translateX(60px) scale(1.2, 1.2);
+    opacity: 0.3;
+  }
+  60% {
+    -webkit-transform: translateX(130px) scale(2, 2);
+    opacity: 0.05;
+  }
+  65% {
+    -webkit-transform: translateX(145px) scale(1.2, 1.2);
+  }
+  80% {
+    -webkit-transform: translateX(120px) scale(0.5, 0.5);
+    opacity: 0.1;
+  }
+  90% {
+    -webkit-transform: translateX(80px) scale(0.8, 0.8);
+  }
+  100% {
+    -webkit-transform: translateX(60px);
+    opacity: 0.3;
+  }
+}
+/* Moz */
+/* No-prefix */
+@keyframes rollercoaster {
+  0% {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  8% {
+    -webkit-transform: rotate(240deg);
+    transform: rotate(240deg);
+  }
+  20% {
+    -webkit-transform: rotate(300deg);
+    transform: rotate(300deg);
+  }
+  40% {
+    -webkit-transform: rotate(380deg);
+    transform: rotate(380deg);
+  }
+  45% {
+    -webkit-transform: rotate(440deg);
+    transform: rotate(440deg);
+  }
+  50% {
+    -webkit-transform: rotate(495deg);
+    transform: rotate(495deg);
+    opacity: 1;
+  }
+  50.1% {
+    -webkit-transform: rotate(495deg);
+    transform: rotate(495deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(495deg);
+    transform: rotate(495deg);
+    opacity: 0;
+  }
+}
+@keyframes rollercoaster2 {
+  0% {
+    opacity: 0;
+  }
+  49.9% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  58% {
+    -webkit-transform: rotate(-160deg);
+    transform: rotate(-160deg);
+  }
+  70% {
+    -webkit-transform: rotate(-240deg);
+    transform: rotate(-240deg);
+  }
+  80% {
+    -webkit-transform: rotate(-300deg);
+    transform: rotate(-300deg);
+  }
+  90% {
+    -webkit-transform: rotate(-340deg);
+    transform: rotate(-340deg);
+  }
+  100% {
+    -webkit-transform: rotate(-405deg);
+    transform: rotate(-405deg);
+  }
+}
+@keyframes shadow {
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(65px) scale(0.5, 0.5);
+    transform: translateX(65px) scale(0.5, 0.5);
+  }
+  8% {
+    -webkit-transform: translateX(30px) scale(2, 2);
+    transform: translateX(30px) scale(2, 2);
+  }
+  13% {
+    -webkit-transform: translateX(0px) scale(1.3, 1.3);
+    transform: translateX(0px) scale(1.3, 1.3);
+  }
+  30% {
+    -webkit-transform: translateX(-15px) scale(0.5, 0.5);
+    transform: translateX(-15px) scale(0.5, 0.5);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: translateX(60px) scale(1.2, 1.2);
+    transform: translateX(60px) scale(1.2, 1.2);
+    opacity: 0.3;
+  }
+  60% {
+    -webkit-transform: translateX(130px) scale(2, 2);
+    transform: translateX(130px) scale(2, 2);
+    opacity: 0.05;
+  }
+  65% {
+    -webkit-transform: translateX(145px) scale(1.2, 1.2);
+    transform: translateX(145px) scale(1.2, 1.2);
+  }
+  80% {
+    -webkit-transform: translateX(120px) scale(0.5, 0.5);
+    transform: translateX(120px) scale(0.5, 0.5);
+    opacity: 0.1;
+  }
+  90% {
+    -webkit-transform: translateX(80px) scale(0.8, 0.8);
+    transform: translateX(80px) scale(0.8, 0.8);
+  }
+  100% {
+    -webkit-transform: translateX(60px);
+    transform: translateX(60px);
+    opacity: 0.3;
+  }
+}
+#loader2:after {
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+}
+#loader2 .roller {
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 
-#map {
-  margin-right: 400px;
+#loader3:after {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+#loader3 .roller {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
-#floating-panel {
-  background: #fff;
-  padding: 5px;
-  font-size: 14px;
-  font-family: Arial;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+.input-style {
+  margin: 20px;
+  display: block;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  width: 250px;
+  height: 30px;
+  border: none;
+  font-size: 13px;
+  border-radius: 4px;
+  color: #4c5264;
+}
+
+.submit-style {
+  margin: 20px;
+  display: block;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  width: 250px;
+  height: 30px;
+  border: none;
+  font-size: 13px;
+  color: #FFF;
+  background-color: #4c5264;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.red-b {
+  background-color: #f85050;
+}
+
+.right-zone {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  height: 255px;
+}
+
+.left-zone {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  height: 300px;
+  margin-left: 7%;
+}
+
+.middle-zone {
+  position: relative;
+  display: inline-block;
+  height: 300px;
+  top: -105px;
+}
+
+.zone {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#zipcode {
+  pointer-events: none;
+  position: absolute;
   display: none;
-}
-
-@media print {
-  #map {
-    height: 500px;
-    margin: 0;
-  }
-
-  #right-panel {
-    float: none;
-    width: auto;
-  }
 }
