@@ -101,7 +101,7 @@ nav {
   margin-top: 14px;
   margin-right: 16px;
   background: url("../images/logo.png") center center no-repeat;
-  background-size: 32px 32px;
+  background-size: contain;
 }
 
 
@@ -150,7 +150,7 @@ nav .navist a {
 .content {
   position: absolute;
   width: 100%;
-  top: 64px;
+  /*top: 64px;*/
   opacity: 1;
   animation: fade 1s ease-in;
 }

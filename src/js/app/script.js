@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 function roundToTwo(num) {
-  return +(Math.round(num + "e+2")  + "e-2");
+  return +(Math.round(num + "e+5")  + "e-5");
 }
 
 $(function () {

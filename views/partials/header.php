@@ -12,7 +12,7 @@
 <body class="page-<?= $class ?>">
   <nav>
     <div class="container">
-      <a id="logo" href="<?= URL ?>" title="Cinefast"></a>
+      <a id="logo" href="<?= URL ?>" title="Cineto.me"></a>
       <ul class="navist left">
         <li><a href="<?= URL ?>results">Recherche</a></li>
         <li><a href="<?= URL ?>showtimes">Seances</a></li>

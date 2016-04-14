@@ -54,8 +54,8 @@ foreach ($html->find('#movie_results .theater') as $div) {
 			$movie_address = utf8_encode($div->find('.info',0)->innertext);
 
 			// Sanitize lang
-			if (utf8_encode($movie->find('.times text', 0)->plaintext) == "VO st Fr") $movie_lang = 'VOSTFR';
-			else $movie_lang = 'VF';
+			if (utf8_encode($movie->find('.times text', 0)->plaintext) == "VO st Fr") $movie_lang = 'Française';
+			else $movie_lang = 'Originale';
 
 			// Sanitize the showtime
 			$movie_showtime = $showtime->innertext;
