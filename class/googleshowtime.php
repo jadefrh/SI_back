@@ -76,10 +76,6 @@ usort($showtimes, build_sorter('4'));
 
 $_SESSION["showtimes"] = $showtimes;
 
-echo "<pre>";
-print_r($_SESSION["showtimes"]);
-echo "</pre>";
-
 // echo $t." cinémas, ".$m." films, et ".$s." séances."."<br />";
 // echo $date_hour." heures et ".$date_minutes." minutes.";
 

@@ -2,9 +2,10 @@
   <div id="results_list">
 
     <?php
-    foreach ($query_results as $q_r) {
+    $i = 0;
+    foreach ($_SESSION["showtimes"] as $i => $_showtime) {
       $q_r_curl = curl_init();
-      curl_setopt($q_r_curl, CURLOPT_URL, 'http://api.themoviedb.org/3/search/movie?api_key=de6bcf23cd6c5009fd4ed90bc5127c45&query='.urlencode($q_r).'&primary_release_year='.$year);
+      curl_setopt($q_r_curl, CURLOPT_URL, 'http://api.themoviedb.org/3/search/movie?api_key=de6bcf23cd6c5009fd4ed90bc5127c45&query='.urlencode($_SESSION["showtimes"][$i][0]).'&primary_release_year='.$year);
       curl_setopt($q_r_curl, CURLOPT_RETURNTRANSFER, true);
       $q_r_array = curl_exec($q_r_curl);
       curl_close($q_r_curl);
@@ -25,9 +26,19 @@
       <div class="movie_card_title_result"> <?= $film->title ?> </div>
     </div>
     <?php
+    $i++;
   }
   ?>
 
+  <?php
+  // $i = 0;
+  // foreach ($_SESSION["showtimes"] as $i => $_showtime) {
+  //   echo "<pre>";
+  //   print_r($_SESSION["showtimes"][$i][0]);
+  //   echo "</pre>";
+  //   $i++;
+  // }
+  ?>
 </div>
 
 <div id="view"></div>
