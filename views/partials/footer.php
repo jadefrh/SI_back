@@ -1,6 +1,4 @@
 <script src="<?= URL ?>src/js/libs/jquery-2.2.0.js"></script>
-<script src="<?= URL ?>src/js/app/script.js"></script>
-<script src="<?= URL ?>src/js/app/script.js"></script>
 <script type="text/javascript">
 getZip = function(cb) {
   if (document.location.protocol === 'http:' && (navigator.geolocation != null)) {
@@ -19,15 +17,15 @@ getZip = function(cb) {
   });
   }
 };
-getZip(function(zipcode){
-  console.log("zip code found: " + zipcode);
-  document.getElementById('zipcodehidden').value = zipcode;
-  document.getElementById('zipcodeinput').value = zipcode;
-  document.getElementById('zipcode-result').innertext = zipcode;
-  window.location.href = 'http://sdancermichel.me/cine/routes/';
-});
-</script>
-<!-- <script src="<?= URL ?>src/js/app/gmapsroutes.js" type="text/javascript"></script> -->
-<!-- <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBEctbGttoe3FU3tn_wbHpZaiw_j_SKNc0&signed_in=true&language=fr&callback=initMap' async defer></script> -->
+// getZip(function(zipcode){
+//   console.log("zip code found: " + zipcode);
+//   document.getElementById('zipcodehidden').value = zipcode;
+//   document.getElementById('zipcodeinput').value = zipcode;
+//   document.getElementById('zipcode-result').innertext = zipcode;
+//   window.location.href = 'http://sdancermichel.me/cine/routes/';
+// });
+// </script>
+<script src="<?= URL ?>src/js/app/script.js"></script>
+
 </body>
 </html>

@@ -943,3 +943,7 @@ body {
   }
   .container { width: 300px; }
 }
+
+.movie_card_result {
+  cursor: pointer;
+}

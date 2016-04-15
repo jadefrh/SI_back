@@ -16,13 +16,14 @@
         </p>
       </div>
       <div class="transport">
-
+        <h3>Itinéraire :</h3>
+        <span>M9 : prendre le </span>
       </div>
     </div>
     <div class="right panel">
       <div class="map">
         <h3>Départ: Montreuil, Hetic <br> Arrivée: Pathé Beaugrenelle, 7 Rue Linois, 75015 Paris</h3>
-        <iframe class="maps-frame" style="border: none; width: 100%; height: 590px; margin-left: auto; margin-right: auto;" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCMPiEb-6ZOVHHuTUIZafxfoCpBCRGrBlo
+        <iframe class="maps-frame" style="border: none; width: 100%; height: 590px; margin-left: auto; margin-right: auto;" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBEctbGttoe3FU3tn_wbHpZaiw_j_SKNc0
         &origin=Oslo+Norway&destination=Telemark+Norway&avoid=tolls|highways">
       </iframe>
     </div>
