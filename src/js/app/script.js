@@ -30,17 +30,17 @@ $(function () {
     var overview = $(this).attr('data-overview');
     var date = $(this).attr('data-date');
     var popularity = $(this).attr('data-popularity');
-    console.log(poster);
-    console.log(backdrop);
-    console.log(title);
-    console.log(overview);
-    console.log(date);
-    console.log(popularity);
-    // viewcard.find('.movie-title').text(title);
-    // viewcard.find('.movie-data').text("Date de sortie : "+date);
-    // viewcard.find('.synospsis').text(overview);
-    // viewcard.find('.poster').attr('src') = poster;
-    // viewcard.find('.poster').attr('alt') = title;
+    console.log('poster : '+poster);
+    console.log('backdrop : '+backdrop);
+    console.log('title : '+title);
+    console.log('overview : '+overview);
+    console.log('date : '+date);
+    console.log('popularity : '+popularity);
+    viewcard.find('.movie-title').text(title);
+    viewcard.find('.movie-data').text("Date de sortie : "+date);
+    viewcard.find('.synospsis').text(overview);
+    viewcard.find('.poster').attr('src') = 'http://image.tmdb.org/t/p/w500/'+poster;
+    viewcard.find('.poster').attr('alt') = title;
 
     // var html = "<h1>"+ title +"</h1><p id='overview'>"+ overview +"</p><img src='http://image.tmdb.org/t/p/w500/"+ poster +"'><img src='http://image.tmdb.org/t/p/w500/"+ backdrop +"'><p id='date'>"+ date +"</p><p id='popularity'>"+ popularity +"</p>";
 

@@ -1,3 +1,17 @@
+<?php
+function truncate($string,$length=25,$append="&hellip;") {
+  $string = trim($string);
+
+  if(strlen($string) > $length) {
+    $string = wordwrap($string, $length);
+    $string = explode("\n", $string, 2);
+    $string = $string[0] . $append;
+    // $string = substr(trim($string),0,10).'...';
+  }
+
+  return $string;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

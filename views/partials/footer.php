@@ -1,11 +1,8 @@
 <script src="<?= URL ?>src/js/libs/jquery-2.2.0.js"></script>
 <script src="<?= URL ?>src/js/app/script.js"></script>
-<!-- <?php
-// if ($class = 'routes') include 'views/partials/gmaps-routes.php';
-?> -->
 <script type="text/javascript">
 getZip = function(cb) {
-  // if (document.location.protocol === 'http:' && (navigator.geolocation != null)) {
+  if (document.location.protocol === 'http:' && (navigator.geolocation != null)) {
   return navigator.geolocation.getCurrentPosition(function(pos) {
     var coords, url;
     coords = pos.coords;
@@ -19,13 +16,17 @@ getZip = function(cb) {
       return cb(data.address.postcode);
     });
   });
-  // }
+  }
 };
 getZip(function(zipcode){
   console.log("zip code found: " + zipcode);
   document.getElementById('zipcodehidden').value = zipcode;
   document.getElementById('zipcodeinput').value = zipcode;
+  document.getElementById('zipcode-result').innerHTML = zipcode;
 });
 </script>
+<!-- <?php
+if ($class = 'routes') include 'views/partials/gmaps-routes.php';
+?> -->
 </body>
 </html>
