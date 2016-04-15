@@ -17,13 +17,13 @@ getZip = function(cb) {
   });
   }
 };
-// getZip(function(zipcode){
-//   console.log("zip code found: " + zipcode);
-//   document.getElementById('zipcodehidden').value = zipcode;
-//   document.getElementById('zipcodeinput').value = zipcode;
-//   document.getElementById('zipcode-result').innertext = zipcode;
-//   window.location.href = 'http://sdancermichel.me/cine/routes/';
-// });
+getZip(function(zipcode){
+  console.log("zip code found: " + zipcode);
+  document.getElementById('zipcodehidden').value = zipcode;
+  document.getElementById('zipcodeinput').value = zipcode;
+  document.getElementById('zipcode-result').innertext = zipcode;
+  // window.location.href = 'http://sdancermichel.me/cine/routes/';
+});
 // </script>
 <script src="<?= URL ?>src/js/app/script.js"></script>
 
