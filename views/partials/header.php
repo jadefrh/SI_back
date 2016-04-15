@@ -1,12 +1,11 @@
 <?php
-function truncate($string,$length=25,$append="&hellip;") {
+function truncate($string,$length=18,$append="&hellip;") {
   $string = trim($string);
 
   if(strlen($string) > $length) {
     $string = wordwrap($string, $length);
     $string = explode("\n", $string, 2);
     $string = $string[0] . $append;
-    // $string = substr(trim($string),0,10).'...';
   }
 
   return $string;
@@ -28,13 +27,13 @@ function truncate($string,$length=25,$append="&hellip;") {
     <div class="container">
       <a id="logo" href="<?= URL ?>" title="Cineto.me"></a>
       <ul class="navist left">
-        <li <?php if('') ?>class="active"><a href="<?= URL ?>results">Recherche</a></li>
-        <li><a href="<?= URL ?>showtimes">Seances</a></li>
-        <li><a href="<?= URL ?>routes">Itinéraires</a></li>
+        <li <?php if ($class =="") {?>class="active"<?php } ?>><a href="<?= URL ?>results">Recherche</a></li>
+        <li <?php if ($class =="results") {?>class="active"<?php } ?>><a href="<?= URL ?>showtimes">Seances</a></li>
+        <li <?php if ($class =="routes") {?>class="active"<?php } ?>><a href="<?= URL ?>routes">Itinéraires</a></li>
       </ul>
       <ul class="navist right">
-        <li><a href="<?= URL ?>about">A propos</a></li>
-        <li><a href="<?= URL ?>aide">Aide</a></li>
+        <li <?php if ($class =="about") {?>class="active"<?php } ?>><a href="<?= URL ?>about">A propos</a></li>
+        <li <?php if ($class =="aide") {?>class="active"<?php } ?>><a href="<?= URL ?>aide">Aide</a></li>
       </ul>
     </div>
   </nav>

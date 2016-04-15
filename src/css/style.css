@@ -303,6 +303,7 @@ nav .navist a {
   height: 100%;
   background: #4c5264;
   opacity: 0.85;
+  pointer-events: none;
 }
 
 .movie-title {
@@ -402,10 +403,6 @@ nav .navist a {
   box-shadow: 1px 1px 8px 1px #E3E3E3;
 }
 
-.movie-data {
-  top: -10px;
-}
-
 .synopsis {
   top: -10px;
   text-align: justify;
@@ -415,6 +412,7 @@ nav .navist a {
 .poster {
   display: inline-block;
   margin: 20px;
+  max-height: 100px;
 }
 
 .text-area {
@@ -431,6 +429,14 @@ nav .navist a {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 1px 1px 8px 1px #E3E3E3;
+}
+
+.cinema h3 {
+  float: left;
+}
+
+.cinema a {
+  float: right;
 }
 
 .map {
@@ -914,4 +920,26 @@ body {
   .content .container .panel {
     width: 100%;
   }
+  .container { width: 800px; }
+}
+
+@media screen and (max-width: 850px) {
+  .content .container .panel {
+    width: 100%;
+  }
+  .container { width: 600px; }
+}
+
+@media screen and (max-width: 650px) {
+  .content .container .panel {
+    width: 100%;
+  }
+  .container { width: 400px; }
+}
+
+@media screen and (max-width: 450px) {
+  .content .container .panel {
+    width: 100%;
+  }
+  .container { width: 300px; }
 }

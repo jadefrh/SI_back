@@ -16,8 +16,9 @@
           Quel que soit votre pays de résidence, vous nous autorisez à utiliser vos informations aux États-Unis, en Irlande, ainsi que dans tout autre pays où Twitter est actif, mais aussi, par voie de conséquence, à les transférer vers ou à les stocker dans ces pays. Les lois relatives à la confidentialité et à la protection des données en vigueur dans certains de ces pays sont susceptibles de différer de celles appliquées dans votre pays de résidence.
 
           <br><br>
-          Si vous avez des questions ou commentaires concernant la présente politique de confidentialité, n’hésitez pas à nous contacter en cliquant ici ou à l’adresse privacy@twitter.com.</p>
-        </div>
+          Si vous avez des questions ou commentaires concernant la présente politique de confidentialité, n’hésitez pas à nous contacter en cliquant ici ou à l’adresse privacy@twitter.com.
+        </p>
       </div>
     </div>
   </div>
+</div>

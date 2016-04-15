@@ -26,6 +26,8 @@ else if($q == 'aide')
   $page = 'aide';
 else if($q == 'results')
 	$page = 'results';
+else if($q == 'buy')
+	$page = 'buy';
 else
 	$page = '404';
 

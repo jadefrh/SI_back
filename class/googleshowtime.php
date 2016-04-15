@@ -18,7 +18,7 @@
 * @GoldMinelabs.com
 */
 $zip = $_GET["zipcode"];
-$gmurl = 'http://www.google.fr/movies?near='.$zip;
+$gmurl = 'http://www.google.fr/movies?near=montreuil';
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $gmurl); // Default CURLOPT_URL - near Montreuil
